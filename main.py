@@ -2,21 +2,21 @@ import os
 import graphviz
 
 file_hash = r''
-commits = dict()
 repo_path = r''
 prog_path = r''
-
-def init():
-    with open('config.yaml') as f:
-        global prog_path
-        prog_path = f.readline().split()[1].replace('\\', '\\\\')
-        global repo_path
-        repo_path = f.readline().split()[1].replace('\\', '\\\\')
-        global file_hash
-        file_hash = f.readline().split()[1]
+commits = dict()
+def init(path):
+    try:
+        with open(path) as f:
+            prog_path = f.readline().split()[1].replace('\\', '\\\\')
+            repo_path = f.readline().split()[1].replace('\\', '\\\\')
+            file_hash = f.readline().split()[1]
+            os.chdir(repo_path)
+            return (prog_path, repo_path, file_hash)
+    except: # файл не найден
+        return ("", "", "")
 
 def get_commits():
-    os.chdir(repo_path)
     output = os.popen('git log --all --pretty=format:"%H %P %s%d"').read().split("\n") # получим список всех коммитов в нужном нам формате
     for commit in output:
         commit = commit.split()
@@ -30,6 +30,7 @@ def get_commits():
                 commits[commit[0]].append(commit[i])
             else:
                 break
+    return commits
 
 true_commits = dict()
 def check_dirs(commit, hash1): # я не понимаю, как идентифицировать файл, если в каждом коммите у него разный хэш?
@@ -58,7 +59,7 @@ def select_commits():
                 continue
 
         check_dirs(commit, hash) # пройдёмся по объектам коммита. проверим все файлы на совпадение
-
+    return true_commits
 
 def build_graph():
     dot = []
@@ -66,7 +67,7 @@ def build_graph():
     for commit1 in true_commits: # проходимся по словарю
         for commit2 in true_commits:
             if true_commits[commit2][0] == commit1: # если хэш родителя какого-то коммита равен хэшу другого коммита, то они связаны
-                dot.append(f'"{commit1}" -> "{commit2}" [label="{true_commits[commit2][1:]}"]')
+                dot.append(f'"{commit1}" -> "{commit2}" [label="{' '.join(true_commits[commit2][1:])}"]')
     dot.append('}')
     return '\n'.join(dot)
 
@@ -81,7 +82,7 @@ def show_graph(dot_graph):
 
 
 if __name__ == "__main__":
-    init()
+    (prog_path, repo_path, file_hash) = init('config.yaml')
     get_commits()
     select_commits()
     graphv = build_graph()
