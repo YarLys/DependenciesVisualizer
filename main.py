@@ -33,7 +33,7 @@ def get_commits():
     return commits
 
 true_commits = dict()
-def check_dirs(commit, hash1): # я не понимаю, как идентифицировать файл, если в каждом коммите у него разный хэш?
+def check_dirs(commit, hash1): 
     output = os.popen(f'git cat-file -p {hash1}').read().split('\n')
     for str in output:
         if len(str) == 0:
@@ -88,3 +88,9 @@ if __name__ == "__main__":
     graphv = build_graph()
     os.chdir(prog_path)
     show_graph(graphv)
+
+'''
+program_path: D:\Projects\Python\ConfigUpr\DependenciesVisualizer\
+repo_path: D:\Projects\Python\ConfigUpr\SchoolList_Client
+file_hash: fac44fab94e6c3e74dc68acd3b485e8893af31a6
+'''
