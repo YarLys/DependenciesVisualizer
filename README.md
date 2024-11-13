@@ -34,10 +34,10 @@
 
 ## Примеры работы программы
 Граф зависимостей тестового репозитория
-![dependencies](https://github.com/user-attachments/assets/d50516c5-2889-4a82-af4a-3b006a56a5c6)
+![image](https://github.com/user-attachments/assets/f08d63fb-6537-4fa1-89a5-c9f9fbc65642)
 
 Граф зависимостей для репозиотрия https://github.com/YarLys/SchoolList_Client с заданным хэшом файла MainActivity.java
-![dependencies](https://github.com/user-attachments/assets/cadb5d76-e234-41c9-845f-39aabac15b1a)
+![dependencies](https://github.com/user-attachments/assets/e34b3275-daed-4a53-adbc-6b05b7b5b543)
 
 ## Тестирование программы
 ![image](https://github.com/user-attachments/assets/d756d2f1-3b76-44e0-83da-06ee6c047843)
