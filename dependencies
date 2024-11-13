@@ -1,10 +1,26 @@
 digraph {
-"aa0905d5fb63ace52ff6c6727c8f56461a8a3577" -> "c1f473a418a06a5d1f3f6ea4dfcde0414e1abeb1" [label="added new file"]
-"c05563118dbc7e71c2953dc1d826dddbda23b921" -> "0f5db7484ead253ca379fd253c34dff84c1fe5be" [label="some bugs fixed, del files"]
-"5e8ae805fd0330ee7c02e683be6603b1fbff3b47" -> "c05563118dbc7e71c2953dc1d826dddbda23b921" [label="second branch commit"]
-"ad732046e62d9b037e13939d874e2e9c455fe42d" -> "aa0905d5fb63ace52ff6c6727c8f56461a8a3577" [label="work on master again"]
-"ad732046e62d9b037e13939d874e2e9c455fe42d" -> "5e8ae805fd0330ee7c02e683be6603b1fbff3b47" [label="branch commit"]
-"9d598dfc942ff06ab7abf44fbeef59a269b8db29" -> "ad732046e62d9b037e13939d874e2e9c455fe42d" [label="create file again"]
-"ffcf03c3aa6ce920aaab447c0cc8eb97c2cd8c27" -> "9d598dfc942ff06ab7abf44fbeef59a269b8db29" [label="del file"]
-"e80bcf8e0c18641fdaab0e4bda9e1a0e524159cb" -> "ffcf03c3aa6ce920aaab447c0cc8eb97c2cd8c27" [label="some changes"]
+"aa0905d5fb63ace52ff6c6727c8f56461a8a3577
+['dir1', 'readme.txt']" -> "c1f473a418a06a5d1f3f6ea4dfcde0414e1abeb1
+['dir1', 'readme.txt', 'new_file.txt']" [label="  a d d e d   n e w   f i l e"]
+"c05563118dbc7e71c2953dc1d826dddbda23b921
+['ad', 'dfalk', 'dir1', 'readme.txt']" -> "0f5db7484ead253ca379fd253c34dff84c1fe5be
+['dir1', 'readme.txt']" [label="  s o m e   b u g s   f i x e d ,   d e l   f i l e s"]
+"5e8ae805fd0330ee7c02e683be6603b1fbff3b47
+['dir1', 'readme.txt']" -> "c05563118dbc7e71c2953dc1d826dddbda23b921
+['ad', 'dfalk', 'dir1', 'readme.txt']" [label="  s e c o n d   b r a n c h   c o m m i t"]
+"ad732046e62d9b037e13939d874e2e9c455fe42d
+['dir1', 'readme.txt']" -> "aa0905d5fb63ace52ff6c6727c8f56461a8a3577
+['dir1', 'readme.txt']" [label="  w o r k   o n   m a s t e r   a g a i n"]
+"ad732046e62d9b037e13939d874e2e9c455fe42d
+['dir1', 'readme.txt']" -> "5e8ae805fd0330ee7c02e683be6603b1fbff3b47
+['dir1', 'readme.txt']" [label="  b r a n c h   c o m m i t"]
+"9d598dfc942ff06ab7abf44fbeef59a269b8db29
+['dir1', 'readme.txt']" -> "ad732046e62d9b037e13939d874e2e9c455fe42d
+['dir1', 'readme.txt']" [label="  c r e a t e   f i l e   a g a i n"]
+"ffcf03c3aa6ce920aaab447c0cc8eb97c2cd8c27
+['dir1', 'readme.txt']" -> "9d598dfc942ff06ab7abf44fbeef59a269b8db29
+['dir1', 'readme.txt']" [label="  d e l   f i l e"]
+"e80bcf8e0c18641fdaab0e4bda9e1a0e524159cb
+['dir1', 'readme.txt']" -> "ffcf03c3aa6ce920aaab447c0cc8eb97c2cd8c27
+['dir1', 'readme.txt']" [label="  s o m e   c h a n g e s"]
 }

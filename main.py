@@ -25,21 +25,25 @@ def get_commits():
             continue
 
         commits[commit[0]] = [commit[1],] # в словаре по хэшу коммита храним список, который начинается с хэша родителя
+        str = ''
         for i in range(2, len(commit)): # пройдёмся по оставшимся словам в информации о коммите
             if (not commit[i].startswith('(')): # ненужную информацию убираем
-                commits[commit[0]].append(commit[i])
+                str = str + ' ' + commit[i]
             else:
                 break
+        commits[commit[0]].append(str)
     return commits
 
 true_commits = dict()
-def check_dirs(commit, hash1): 
+def check_dirs(commit, hash1):
     output = os.popen(f'git cat-file -p {hash1}').read().split('\n')
     for str in output:
         if len(str) == 0:
             continue
         name = str.split()[1]
         hash = str.split()[2]
+        naming = str.split()[3]
+        commits[commit].append(naming)
         if name == 'blob':
             if hash == file_hash or hash.startswith(file_hash):  # если его хэш совпадает с хэшом искомого файла, то добавляем этот коммит
                 true_commits[commit] = commits[commit]
@@ -67,7 +71,7 @@ def build_graph():
     for commit1 in true_commits: # проходимся по словарю
         for commit2 in true_commits:
             if true_commits[commit2][0] == commit1: # если хэш родителя какого-то коммита равен хэшу другого коммита, то они связаны
-                dot.append(f'"{commit1}" -> "{commit2}" [label="{' '.join(true_commits[commit2][1:])}"]')
+                dot.append(f'"{commit1 + '\n' + str(true_commits[commit1][2:])}" -> "{commit2 + '\n' + str(true_commits[commit2][2:])}" [label="{' '.join(true_commits[commit2][1])}"]')
     dot.append('}')
     return '\n'.join(dot)
 
